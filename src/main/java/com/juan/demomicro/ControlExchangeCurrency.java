@@ -15,7 +15,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 @RestController
-public class ExchangeCurrency {
+public class ControlExchangeCurrency {
     
     @Value("${app.url_exchange_rate}")
     private String url_exchange_rate;

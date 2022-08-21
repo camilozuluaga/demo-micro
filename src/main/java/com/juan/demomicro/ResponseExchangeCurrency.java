@@ -1,6 +1,6 @@
 package com.juan.demomicro;
 
-public class RespuestaExchangeCurrency {
+public class ResponseExchangeCurrency {
 
     private double rate;
     private double result;
@@ -8,10 +8,10 @@ public class RespuestaExchangeCurrency {
     private String from;
     private String to;
 
-    public RespuestaExchangeCurrency() {
+    public ResponseExchangeCurrency() {
     }
 
-    public RespuestaExchangeCurrency(double rate, double result, double amount, String from, String to) {
+    public ResponseExchangeCurrency(double rate, double result, double amount, String from, String to) {
         this.rate = rate;
         this.result = result;
         this.amount = amount;
