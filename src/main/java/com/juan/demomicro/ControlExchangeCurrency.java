@@ -63,26 +63,26 @@ public class ControlExchangeCurrency {
      * que es mas sencillo de ser manipulado
      * @return retorna un objecto de tipo RespuestaExchangeCurrency
      */
-    public RespuestaExchangeCurrency set_reponse_user(JSONObject response){
+    public ResponseExchangeCurrency set_reponse_user(JSONObject response){
         double rate = response.getJSONObject("info").getDouble("rate");
         double result = response.getDouble("result");
         JSONObject query = response.getJSONObject("query");
         double amount = query.getDouble("amount");
         String from = query.getString("from");
         String to = query.getString("to");
-        return new RespuestaExchangeCurrency(rate, result, amount, from, to);
+        return new ResponseExchangeCurrency(rate, result, amount, from, to);
     }
 
 
     @GetMapping("/coptousd/{amount}")
-    public RespuestaExchangeCurrency copToUsd(@PathVariable double amount) throws JsonMappingException, JsonProcessingException{
+    public ResponseExchangeCurrency copToUsd(@PathVariable double amount) throws JsonMappingException, JsonProcessingException{
         String response = sendRequest("USD", "COP", String.valueOf(amount));
         JSONObject responseJsonObject = new JSONObject(response);
         return set_reponse_user(responseJsonObject);
     }
 
     @GetMapping("/usdtocop/{amount}")
-    public RespuestaExchangeCurrency usdToCop(@PathVariable double amount) throws JsonMappingException, JsonProcessingException{
+    public ResponseExchangeCurrency usdToCop(@PathVariable double amount) throws JsonMappingException, JsonProcessingException{
         String response = sendRequest("COP", "USD", String.valueOf(amount));
         JSONObject responseJsonObject = new JSONObject(response);
         return set_reponse_user(responseJsonObject);
