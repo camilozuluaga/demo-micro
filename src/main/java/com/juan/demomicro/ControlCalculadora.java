@@ -35,7 +35,7 @@ public class ControlCalculadora {
     @GetMapping("/dividir/{a}/{b}")
     public Respuesta dividir(@PathVariable double a, @PathVariable double b){
         if(b == 0){
-            return new Respuesta(a,b,(a/b), mensajeErrorDivCero);
+            return new Respuesta(a,b,0, mensajeErrorDivCero);
         }
         return new Respuesta(a,b,(a/b));
     }
