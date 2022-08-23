@@ -51,7 +51,7 @@ public class ControlExchangeCurrency {
      */
     public String sendRequest(String to, String from, String amount){
         final HttpEntity<String> entity = set_headers();
-        String url = url_exchange_convert + String.format("to=%1$s&from=%2$s&amount=%3$s", to, from, amount);
+        String url = url_exchange_convert + String.format("/convert?to=%1$s&from=%2$s&amount=%3$s", to, from, amount);
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
         return response.getBody();

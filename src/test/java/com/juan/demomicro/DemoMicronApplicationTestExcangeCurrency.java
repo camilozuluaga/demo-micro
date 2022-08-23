@@ -33,7 +33,7 @@ class DemoMicronApplicationTestExcangeCurrency {
 
     public String sendRequest(){
         final HttpEntity<String> entity = controlExchangeCurrency.set_headers();
-        String url = url_exchange_get_rate + "symbols=COP&base=USD";
+        String url = url_exchange_get_rate + "/latest?symbols=COP&base=USD";
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
 		return response.getBody();
