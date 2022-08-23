@@ -2,6 +2,7 @@ package com.juan.demomicro;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +16,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 @RestController
+@Configuration
 public class ControlExchangeCurrency {
     
-    @Value("${app.url_exchange_rate}")
-    private String url_exchange_rate;
+    @Value("${app.url_exchange_convert}")
+    private String url_exchange_convert;
 
     @Value("${app.url_exchange_rate_apiKey}")
     private String url_exchange_rate_apiKey;
@@ -49,7 +51,7 @@ public class ControlExchangeCurrency {
      */
     public String sendRequest(String to, String from, String amount){
         final HttpEntity<String> entity = set_headers();
-        String url = url_exchange_rate + String.format("to=%1$s&from=%2$s&amount=%3$s", to, from, amount);
+        String url = url_exchange_convert + String.format("to=%1$s&from=%2$s&amount=%3$s", to, from, amount);
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
         return response.getBody();
